@@ -1,0 +1,447 @@
+@font-face {
+    font-family: LiberationMono;
+    src: url("../fonts/LiberationMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: LiberationMono-Italic;
+    src: url("../fonts/LiberationMono-Italic.ttf") format("truetype");
+}
+
+a {
+    color: #1a75ff;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1aa7ff;
+}
+
+a:active {
+    color: #0047b3;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
+}
+
+a:active {
+    color: #f00;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+    font: 11pt -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background: #e7e7e7;
+    border: 1pt solid #bdbdbd;
+    border-bottom-color: #969696;
+    border-top-color: #d1d1d1;
+    border-radius: 3pt;
+    box-shadow: 0 1pt 2pt #ccc;
+    box-sizing: border-box;
+    color: #333;
+    display: inline-block;
+    font-weight: 600;
+    outline: none;
+    padding: 4pt 8pt;
+    transition: all 0.3s;
+    user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-appearance: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+button:active:enabled {
+    background: #ccc;
+    box-shadow: none;
+    color: #000;
+    transform: scale(0.95) translate(0, 1pt);
+}
+
+button:hover:enabled {
+    background: #f5f5f5;
+}
+
+button:disabled {
+    background: #f5f5f5;
+    border: 1pt solid #c2c2c2;
+    box-shadow: none;
+    color: #777;
+    cursor: not-allowed;
+}
+
+button.large {
+    font-size: 18pt;
+    padding: 12pt 20pt;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1em;
+}
+
+html {
+    height: 100%;
+    overflow: auto;
+}
+
+input,
+textarea {
+    outline: none;
+}
+
+input[type=email],
+input[type=password],
+input[type=text],
+textarea {
+    border: 1pt solid #bdbdbd;
+    border-bottom-color: #969696;
+    border-top-color: #d1d1d1;
+    border-radius: 3pt;
+    box-shadow: 0 1pt 2pt #ccc;
+    box-sizing: border-box;
+    font-size: 11pt;
+    line-height: 1.5em;
+    padding: 2pt 3pt;
+    -webkit-appearance: none;
+}
+
+input[type=email]:disabled,
+input[type=password]:disabled,
+input[type=text]:disabled,
+textarea:disabled {
+    background: #f5f5f5;
+    border: 1pt solid #c2c2c2;
+    box-shadow: none;
+    color: #777;
+    cursor: not-allowed;
+}
+
+textarea {
+    resize: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.window {
+    backdrop-filter: blur(10px);
+    background: rgba(231, 231, 231, 0.7);
+    border: 1pt solid #777;
+    border-radius: 3pt;
+    box-shadow: 0 0 22pt rgba(0, 0, 0, 0.5);
+    left: 50%;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: box-shadow .1s linear;
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.window.inactive {
+    box-shadow: 0 0 14pt rgba(0, 0, 0, 0.3);
+}
+
+.window .field {
+    margin: 10pt 0;
+}
+
+.window .field:first-of-type {
+    margin-top: 0;
+}
+
+.window .panel {
+    display: flex;
+    flex-direction: row;
+}
+
+.window .panel .flexibleSpace {
+    flex: 1;
+}
+
+.window .titlebar {
+    background: #afafaf;
+    line-height: normal;
+    overflow: hidden;
+    padding: 4pt;
+}
+
+.window.inactive .titlebar {
+    background: #e7e7e7;
+    color: #6a6a6a;
+}
+
+.window .titlebar .title {
+    cursor: default;
+    font-size: 10pt;
+    margin: 0;
+    text-align: center;
+    user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.window .titlebar .windowActionButtons {
+    position: absolute;
+    right: 2pt;
+    top: 2pt;
+}
+
+.window .titlebar .windowActionButtons button {
+    float: right;
+    padding: 1pt 2pt;
+}
+
+.window .titlebar .windowActionButtons button span {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 10pt;
+    width: 12pt;
+}
+
+.window .titlebar .windowActionButtons .close {
+    margin-left: 3pt;
+}
+
+.window .titlebar .windowActionButtons .close span {
+    background-image: url("../images/app/Close-Light.png");
+}
+
+.window .titlebar .windowActionButtons .maximise span {
+    background-image: url("../images/app/Maximise-Light.png");
+}
+
+.window .titlebar .windowActionButtons .minimise span {
+    background-image: url("../images/app/Minimise-Light.png");
+}
+
+.window .view {
+    overflow: hidden;
+    padding: 10pt;
+}
+
+.window .windowContainer {
+    border: 1pt solid #e7e7e7;
+    border-radius: 3pt;
+    overflow: hidden;
+    position: relative;
+}
+
+.window .windowContainer .label {
+    margin: 0;
+    text-align: left;
+}
+
+#currentAccountIdentity {
+    flex: 0.5;
+    font-style: italic;
+    text-align: right;
+}
+
+#logo {
+    flex: 1.5;
+    margin: 0;
+}
+
+#logo .logotype {
+    background: url("../images/app/Logo-Light.png") no-repeat;
+    background-size: contain;
+    display: block;
+    height: 30px;
+    width: 208px;
+    transition: all 0.1s ease-out;
+}
+
+#logo:active .logotype {
+    transform: scale(0.95) translate(0, 1pt);
+}
+
+#mainFooter {
+    border-top: 0.5pt solid #ccc;
+    box-sizing: border-box;
+    margin: 40pt auto 0;
+    max-width: 800pt;
+    padding: 10pt;
+}
+
+#mainHeader {
+    align-items: center;
+    border-bottom: 0.5pt solid #ccc;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    gap: 10pt;
+    margin: 0 auto;
+    max-width: 800pt;
+    padding: 30pt 10pt;
+    position: relative;
+    z-index: 1;
+}
+
+#mainHeaderActionButtons {
+    align-items: center;
+    display: flex;
+    flex: 0.5;
+    flex-direction: row;
+    gap: 10pt;
+}
+
+#mainHeaderActionButtons>* {
+    flex: 1;
+}
+
+#mainHeaderActionButtons button {
+    width: 100%;
+}
+
+#windowCompositionLayer {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+#windowLayer {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+@media (max-width: 768px) {
+
+    #logo .logotype {
+        height: 20px;
+        width: 139px;
+    }
+
+    #mainHeader {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #mainHeaderActionButtons {
+        grid-column: 1 / 3;
+        grid-row: 2 / 3;
+    }
+}
+
+/* Styles for dark mode. */
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #333;
+        color: #ccc;
+    }
+
+    button {
+        background: #181818;
+        border: 1pt solid #424242;
+        border-bottom-color: #2e2e2e;
+        border-top-color: #696969;
+        box-shadow: 0 1pt 2pt #000;
+        color: #ccc;
+    }
+
+    button:active:enabled {
+        background: #333;
+        color: #fff;
+    }
+
+    button:hover:enabled {
+        background: #0a0a0a;
+    }
+
+    button:disabled {
+        background: #0a0a0a;
+        border: 1pt solid #3d3d3d;
+        color: #888;
+    }
+
+    input[type=email],
+    input[type=password],
+    input[type=text],
+    textarea {
+        background-color: #505050;
+        border: 1pt solid #424242;
+        border-bottom-color: #2e2e2e;
+        border-top-color: #696969;
+        box-shadow: 0 1pt 2pt #000;
+        color: #ccc;
+    }
+
+    input[type=email]:disabled,
+    input[type=password]:disabled,
+    input[type=text]:disabled,
+    textarea:disabled {
+        background: #0a0a0a;
+        border: 1pt solid #3d3d3d;
+        color: #888;
+    }
+
+    .window {
+        background: rgba(24, 24, 24, 0.7);
+        border-color: #0b0b0b;
+    }
+
+    .window .titlebar {
+        background: #505050;
+    }
+
+    .window.inactive .titlebar {
+        background: #181818;
+        color: #959595;
+    }
+
+    .window .titlebar .windowActionButtons .close span {
+        background-image: url("../images/app/Close-Dark.png");
+    }
+
+    .window .titlebar .windowActionButtons .maximise span {
+        background-image: url("../images/app/Maximise-Dark.png");
+    }
+
+    .window .titlebar .windowActionButtons .minimise span {
+        background-image: url("../images/app/Minimise-Dark.png");
+    }
+
+    .window .windowContainer {
+        border-color: #323232;
+    }
+
+    #logo .logotype {
+        background-image: url("../images/app/Logo-Dark.png");
+    }
+}

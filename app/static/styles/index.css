@@ -1,0 +1,137 @@
+.window input[type=email],
+.window input[type=password],
+.window input[type=text] {
+    width: 100%;
+}
+
+#about,
+#chats,
+#pitch {
+    box-sizing: border-box;
+    margin: 40pt auto 0;
+    max-width: 800pt;
+}
+
+#loginSubmitButton {
+    flex: 1;
+}
+
+#loginWindow,
+#userRegistrationWindow {
+    width: 200pt;
+    z-index: 1;
+}
+
+#pitch {
+    display: grid;
+    gap: 40pt;
+    grid-template-columns: 1fr 1fr;
+}
+
+#pitch .caption {
+    line-height: 1.5em;
+    margin: 10pt 0 0;
+}
+
+#pitch .caption .itemNumber {
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+#pitch .thumbnail {
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1pt solid #bdbdbd;
+    border-bottom-color: #969696;
+    border-top-color: #d1d1d1;
+    border-radius: 3pt;
+    box-shadow: 0 1pt 2pt #ccc;
+    box-sizing: border-box;
+    height: 340px;
+    overflow: hidden;
+    width: 100%;
+}
+
+#pitch #intro .thumbnail {
+    background-image: url("../images/app/Pitch-01.png");
+}
+
+#pitch #highlight .thumbnail {
+    background-image: url("../images/app/Pitch-02.png");
+}
+
+#pitch #dive .thumbnail {
+    background-image: url("../images/app/Pitch-03.png");
+}
+
+#pitch #linked .thumbnail {
+    background-image: url("../images/app/Pitch-04.png");
+}
+
+#pitch #conclusion .thumbnail {
+    background-image: url("../images/app/Pitch-05.png");
+}
+
+#userRegisterButton {
+    flex: 1.7;
+}
+
+@media only screen and (max-width: 768px) {
+
+    nav {
+        box-sizing: border-box;
+        padding: 0 10pt;
+        position: static;
+        width: 100%;
+    }
+
+    #about,
+    #chats {
+        padding: 0 20pt;
+    }
+
+    #loginEmailTextField {
+        display: block;
+        margin-bottom: 5pt;
+        width: 100%;
+    }
+
+    #loginWindow,
+    #userRegistrationWindow {
+        max-width: 290pt;
+        width: 80%;
+    }
+
+    #pitch {
+        gap: 0;
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+
+    #pitch .caption {
+        background: #ccc;
+        margin: 0;
+        padding: 20pt;
+    }
+
+    #pitch .thumbnail {
+        border-color: #ccc;
+        border-width: 1pt 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+/* Styles for dark mode. */
+@media (prefers-color-scheme: dark) {
+
+    #pitch .caption {
+        background: none;
+    }
+
+    #pitch .thumbnail {
+        border-color: #2e2e2e;
+    }
+}

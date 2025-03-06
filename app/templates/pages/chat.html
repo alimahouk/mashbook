@@ -1,0 +1,145 @@
+{% extends "pages/base.html" %}
+
+{% block headTags %}
+<title>
+    {% if chat and chat.topic %}
+    {{ chat.topic }}
+    {% else %}
+    New Chat | Mashbook
+    {% endif %}
+</title>
+<link href="{{ url_for('static', filename='styles/code/default.css') }}"
+      rel="stylesheet"
+      type="text/css">
+<link href="{{ url_for('static', filename='styles/chat.css') }}"
+      rel="stylesheet"
+      type="text/css">
+{% endblock %}
+
+{% block nav %}
+<div id="mainHeaderActionButtons">
+    <form action="/c/new"
+          method="get">
+        <button id="navNewChatButton"
+                title="Start a new chat."
+                type="submit">New Chat</button>
+    </form>
+    {% if current_user %}
+    <form action="/log-out"
+          method="post"
+          name="logoutForm">
+        <button id="navLogoutButton"
+                title="Log out of this account."
+                type="submit">Logout</button>
+    </form>
+    {% endif %}
+</div>
+{% if current_user %}
+<div id="currentAccountIdentity">{{ current_user.email_address }}</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="window classic hidden"
+     id="selectionPopup">
+    <div class="windowContainer">
+        <div class="titlebar">
+            <h3 class="title">Chat Branch</h3>
+            <div class="windowActionButtons">
+                <button class="close"
+                        title="Close">
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <div class="view">
+            <form action="/c/new"
+                  method="post"
+                  name="chatForkForm">
+                <div class="fields">
+                    <input name="context_range_length"
+                           type="hidden">
+                    <input name="context_range_start"
+                           type="hidden">
+                    <input name="message_id"
+                           type="hidden">
+                    <div class="field">
+                        <p class="label"></p>
+                        <textarea class="autofocus clearable"
+                                  id="userInputField"
+                                  name="content_md"
+                                  placeholder="Your message (Markdown formatting allowed)"
+                                  required></textarea>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="flexibleSpace"></div>
+                    <button id="chatForkSubmitButton"
+                            title="Create a new branch off this chat."
+                            type="submit">Branch Off</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% if not current_user %}
+<em id="ephemeralityNotice">This chat will be deleted after 24 hours. To preserve and view your chat history, <a href="/">create an account</a> (it's free and super quick).</em>
+{% endif %}
+<section aria-labelledby="title"
+         data-chat-id="{{ chat.id }}"
+         id="chat">
+    <h2 id="title">
+        {% if chat and chat.topic %}
+        {{ chat.topic }}
+        {% else %}
+        New Chat
+        {% endif %}
+    </h2>
+    <div id="messages">
+        {% for message in chat.messages %}
+        <article class="message {% if message.sender_id %} user {% else %} system {% endif %}"
+                 id="{{ message.id }}">
+            <header>
+                <h3 class="author">
+                    {% if message.sender_role == "user" %}
+                    You
+                    {% else %}
+                    Mashbook
+                    {% endif %}
+                </h3>
+            </header>
+            <section class="content"
+                     itemprop="text">{{ message.content_html | safe }}</section>
+        </article>
+        {% endfor %}
+    </div>
+    <form id="userInputSection"
+          name="userInputSection">
+        <textarea disabled
+                  id="userInputField"
+                  name="userInputField"
+                  placeholder="Your message (Markdown formatting allowed)"
+                  required></textarea>
+        <button disabled
+                id="sendUserInputButton"
+                type="submit">Send</button>
+    </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script charset="utf-8"
+        type="text/javascript">
+            const debug = {{ debug_mode.lower() }};
+        </script>
+<script crossorigin="anonymous"
+        integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+"
+        src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha512-lYRvlgmxv7o+vp/Gmo3p4qLML4csV0loGFy8cP2vpMSwV4F65BTq6LUZyq5zlV5s/LB0KkdGhd/tnMCmjWardA=="
+        referrerpolicy="no-referrer"
+        src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.0.3/marked.min.js"></script>
+<script charset="utf-8"
+        src="{{ url_for('static', filename='scripts/chat.js') }}"
+        type="text/javascript"></script>
+{% endblock %}

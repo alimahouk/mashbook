@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve the Mashbook website.
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/html/mashbook
+Environment="PATH=/var/www/html/mashbook/venv/bin"
+ExecStart=/var/www/html/mashbook/venv/bin/uwsgi --ini /var/www/html/mashbook/hosting/uwsgi.ini
+
+[Install]
+WantedBy=multi-user.target

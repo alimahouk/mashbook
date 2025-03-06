@@ -1,0 +1,50 @@
+{% extends "pages/base.html" %}
+
+{% block headTags %}
+<title>Mashbook</title>
+<link href="{{ url_for('static', filename='styles/index.css') }}"
+      rel="stylesheet"
+      type="text/css">
+{% endblock %}
+
+{% block nav %}
+<div id="mainHeaderActionButtons">
+      <form action="/c/new"
+            method="get">
+            <button id="navNewChatButton"
+                    title="Start a new chat."
+                    type="submit">New Chat</button>
+      </form>
+      <form action="/log-out"
+            method="post"
+            name="logoutForm">
+            <button id="navLogoutButton"
+                    title="Log out of this account."
+                    type="submit">Logout</button>
+      </form>
+</div>
+<div id="currentAccountIdentity">{{ current_user.email_address }}</div>
+{% endblock %}
+
+{% block content %}
+<div id="chats">
+      <h1>Chats</h1>
+      <ul>
+            {% if chats %}
+            {% for chat in chats %}
+            <li>
+                  <a href="{{ chat.permalink }}">{{ chat.topic }}</a> - [<a href="/c/{{ chat.id }}/remove">Delete</a>]
+            </li>
+            {% endfor %}
+            {% else %}
+            <p>No chats yet. <a href="/c/new">Start a new chat!</a></p>
+            {% endif %}
+      </ul>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script charset="utf-8"
+        src="{{ url_for('static', filename='scripts/index.js') }}"
+        type="text/javascript"></script>
+{% endblock %}

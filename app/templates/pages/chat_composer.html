@@ -1,0 +1,49 @@
+{% extends "pages/base.html" %}
+
+{% block headTags %}
+<title>New Chat | Mashbook</title>
+<link href="{{ url_for('static', filename='styles/code/default.css') }}"
+      rel="stylesheet"
+      type="text/css">
+<link href="{{ url_for('static', filename='styles/chat.css') }}"
+      rel="stylesheet"
+      type="text/css">
+{% endblock %}
+
+{% block nav %}
+{% if current_user %}
+<div id="mainHeaderActionButtons">
+      <form action="/log-out"
+            method="post"
+            name="logoutForm">
+            <button id="navLogoutButton"
+                    title="Log out of this account."
+                    type="submit">Logout</button>
+      </form>
+</div>
+<div id="currentAccountIdentity">{{ current_user.email_address }}</div>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<form action="/c/new"
+      id="composer"
+      method="post"
+      name="userInputSection">
+      <h2 id="title">New Chat</h2>
+      <textarea autofocus
+                id="userInputField"
+                name="content_md"
+                placeholder="Your message (Markdown formatting allowed)"
+                required></textarea>
+      <button id="sendUserInputButton"
+              type="submit">Send</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script charset="utf-8"
+        type="text/javascript">
+            const debug = {{ debug_mode.lower() }};
+      </script>
+{% endblock %}

@@ -1,0 +1,154 @@
+{% extends "pages/base.html" %}
+
+{% block headTags %}
+<title>Mashbook</title>
+<link href="{{ url_for('static', filename='styles/index.css') }}"
+      rel="stylesheet"
+      type="text/css">
+{% endblock %}
+
+{% block nav %}
+<div id="mainHeaderActionButtons">
+    <button id="navLoginButton"
+            title="Log into an existing account.">Login…</button>
+    <button id="navUserRegistrationButton"
+            title="Create a new account.">New Account…</button>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="hidden"
+     id="windowLayer">
+    <div id="windowCompositionLayer">
+        <div class="window classic hidden"
+             id="loginWindow">
+            <div class="windowContainer">
+                <div class="titlebar">
+                    <h3 class="title">Login</h3>
+                    <div class="windowActionButtons">
+                        <button class="close"
+                                title="Close">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="view">
+                    <form action="/log-in"
+                          method="post"
+                          name="loginForm">
+                        <div class="fields">
+                            <div class="field">
+                                <input class="autofocus clearable"
+                                       id="loginEmailTextField"
+                                       name="email_address"
+                                       placeholder="Email"
+                                       required
+                                       type="email">
+                            </div>
+                            <div class="field">
+                                <input class="clearable"
+                                       id="loginPasswordTextField"
+                                       minlength="8"
+                                       name="password"
+                                       placeholder="Password"
+                                       required
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <button id="showUserRegisterButton"
+                                    title="Register"
+                                    type="button">New Account…</button>
+                            <div class="flexibleSpace"></div>
+                            <button id="loginSubmitButton"
+                                    title="Login"
+                                    type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="window classic hidden"
+             id="userRegistrationWindow">
+            <div class="windowContainer">
+                <div class="titlebar">
+                    <h3 class="title">New User Account</h3>
+                    <div class="windowActionButtons">
+                        <button class="close"
+                                title="Close">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="view">
+                    <form action="/join"
+                          method="post"
+                          name="userRegistrationForm">
+                        <div class="fields">
+                            <div class="field">
+                                <input class="autofocus clearable"
+                                       id="registrationEmailTextField"
+                                       name="email_address"
+                                       placeholder="Email"
+                                       required
+                                       type="email">
+                            </div>
+                            <div class="field">
+                                <input class="clearable"
+                                       id="registrationPasswordTextField"
+                                       minlength="8"
+                                       name="password"
+                                       placeholder="Password"
+                                       required
+                                       type="password">
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <button id="showLoginButton"
+                                    title="Login"
+                                    type="button">Login…</button>
+                            <div class="flexibleSpace"></div>
+                            <button id="userRegistrationSubmitButton"
+                                    title="Register"
+                                    type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="about">
+    <h1>Imagine the equivalent of tabbed browsing but for your AI chats.</h1>
+    <p>Highlight any snippet within a chat and instantly branch off to a new chat with the full context of the previous chat, without disrupting the flow of your current chat.</p>
+    <p><strong><a href="/c/new">Try it out!</a></strong> <em>(no registration required)</em></p>
+</div>
+<div id="pitch">
+    <div id="intro">
+        <div class="thumbnail"></div>
+        <p class="caption"><span class="itemNumber">1.</span> Talk about any topic you can think of.</p>
+    </div>
+    <div id="highlight">
+        <div class="thumbnail"></div>
+        <p class="caption"><span class="itemNumber">2.</span> If you want to go into detail about something specific within the chat without going off-topic in the current chat, highlight that part and ask Mashbook about it.</p>
+    </div>
+    <div id="dive">
+        <div class="thumbnail"></div>
+        <p class="caption"><span class="itemNumber">3.</span> You'll branch off into a new chat about that snippet with the full context of the existing chat. Now you can go in depth on this new topic without cluttering up the other chat!</p>
+    </div>
+    <div id="linked">
+        <div class="thumbnail"></div>
+        <p class="caption"><span class="itemNumber">4.</span> The snippet you highlighted earlier is now linked to the new branch of the chat you just created, allowing you to return to it within the flow of the other chat.</p>
+    </div>
+    <div id="conclusion">
+        <div class="thumbnail"></div>
+        <p class="caption"><span class="itemNumber">5.</span> You can also access all your chats at any time from the main chat list.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script charset="utf-8"
+        src="{{ url_for('static', filename='scripts/index.js') }}"
+        type="text/javascript"></script>
+{% endblock %}

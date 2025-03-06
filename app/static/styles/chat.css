@@ -1,0 +1,148 @@
+blockquote {
+    border-left: 3pt solid #777;
+    color: #777;
+    padding-left: 10pt;
+}
+
+code {
+    background: #ccc;
+    border-radius: 4pt;
+    padding: 1pt 2pt;
+}
+
+header {
+    margin: 0 0 20pt;
+}
+
+header time {
+    display: block;
+    text-transform: uppercase;
+}
+
+hr {
+    display: none;
+}
+
+pre code {
+    display: block;
+    padding: 5pt;
+}
+
+time {
+    color: #777;
+}
+
+.author {
+    color: #777;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.content {
+    line-height: 1.5em;
+}
+
+.content .highlight {
+    background: #ccc;
+    border-radius: 4pt;
+}
+
+.message {
+    border-bottom: 1pt solid #ccc;
+    margin: 20pt 0;
+}
+
+.window textarea {
+    display: inline-block;
+    margin: 5pt 0;
+    width: 100%;
+}
+
+#chat,
+#composer {
+    box-sizing: border-box;
+    margin: 40pt auto 0;
+    max-width: 800pt;
+}
+
+#composer textarea,
+#userInputSection textarea {
+    font-family: LiberationMono;
+    margin-bottom: 5pt;
+    min-height: 120pt;
+    resize: vertical;
+    width: 100%;
+}
+
+#ephemeralityNotice {
+    background-color: #fbffac;
+    border-radius: 3pt;
+    box-shadow: 0 1pt 2pt #ccc;
+    box-sizing: border-box;
+    display: block;
+    margin: 40pt auto 0;
+    max-width: 800pt;
+    padding: 5pt 10pt;
+    text-align: center;
+}
+
+#selectionPopup {
+    transform: none;
+    width: 240pt;
+    z-index: 1000;
+}
+
+#selectionPopup textarea {
+    font-family: LiberationMono;
+    height: 100pt;
+    min-height: 100pt;
+}
+
+#title {
+    font-size: 2em;
+    margin: 20pt 0;
+}
+
+#userInputSection {
+    margin: 20pt 0;
+}
+
+@media (max-width: 768px) {
+
+    #chat,
+    #composer {
+        padding: 0 20pt;
+    }
+
+    #selectionPopup {
+        left: 50%;
+        position: fixed !important;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Styles for dark mode. */
+@media (prefers-color-scheme: dark) {
+
+    blockquote {
+        border-left-color: #888;
+        color: #888;
+    }
+
+    code {
+        background: #000;
+    }
+
+    .author {
+        color: #888;
+    }
+
+    .content .highlight {
+        background: #000;
+    }
+
+    .message {
+        border-bottom-color: #535353;
+    }
+}
