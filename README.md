@@ -13,7 +13,7 @@ Mashbook is a web application that provides an interactive chat interface powere
 
 ## Prerequisites
 
-- Python 3.11r
+- Python 3.11
 - PostgreSQL database
 - OpenAI API key (Azure OpenAI supported)
 
