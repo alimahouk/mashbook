@@ -5,7 +5,6 @@ Mashbook is a web application that provides an interactive chat interface powere
 ## Features
 
 - Interactive chat interface with real-time updates
-- Support for multiple OpenAI GPT models
 - User authentication and session management
 - Chat history and persistence
 - Markdown support for messages
@@ -104,21 +103,10 @@ The application can be configured through environment variables in the `.env` fi
 - `FLASK_RUN_HOST`: Host to run the server on
 - `FLASK_RUN_PORT`: Port to run the server on
 
-## Development
-
-### Adding New Features
-
-1. Create new routes in `app/routes.py`
-2. Add new modules in `app/modules/`
-3. Create templates in `app/templates/`
-4. Add static assets in `app/static/`
-
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the terms specified in the LICENSE file.
 
-## Acknowledgments
+## Author
 
-- OpenAI for providing the GPT models
-- Flask framework and its extensions
-- All contributors and maintainers
+Created by Ali Mahouk in 2023.
